@@ -1,0 +1,14 @@
+d:\Data\R_Data\Study\Git\AsyncAwaitDemo\bin\Debug\net10.0\AsyncAwaitDemo.exe
+D:\Data\R_Data\Study\Git\AsyncAwaitDemo\bin\Debug\net10.0\AsyncAwaitDemo.deps.json
+D:\Data\R_Data\Study\Git\AsyncAwaitDemo\bin\Debug\net10.0\AsyncAwaitDemo.runtimeconfig.json
+d:\Data\R_Data\Study\Git\AsyncAwaitDemo\bin\Debug\net10.0\AsyncAwaitDemo.dll
+d:\Data\R_Data\Study\Git\AsyncAwaitDemo\bin\Debug\net10.0\AsyncAwaitDemo.pdb
+d:\Data\R_Data\Study\Git\AsyncAwaitDemo\obj\Debug\net10.0\AsyncAwaitDemo.GeneratedMSBuildEditorConfig.editorconfig
+d:\Data\R_Data\Study\Git\AsyncAwaitDemo\obj\Debug\net10.0\AsyncAwaitDemo.AssemblyInfoInputs.cache
+d:\Data\R_Data\Study\Git\AsyncAwaitDemo\obj\Debug\net10.0\AsyncAwaitDemo.AssemblyInfo.cs
+d:\Data\R_Data\Study\Git\AsyncAwaitDemo\obj\Debug\net10.0\AsyncAwaitDemo.csproj.CoreCompileInputs.cache
+d:\Data\R_Data\Study\Git\AsyncAwaitDemo\obj\Debug\net10.0\AsyncAwaitDemo.dll
+d:\Data\R_Data\Study\Git\AsyncAwaitDemo\obj\Debug\net10.0\refint\AsyncAwaitDemo.dll
+d:\Data\R_Data\Study\Git\AsyncAwaitDemo\obj\Debug\net10.0\AsyncAwaitDemo.pdb
+D:\Data\R_Data\Study\Git\AsyncAwaitDemo\obj\Debug\net10.0\AsyncAwaitDemo.genruntimeconfig.cache
+D:\Data\R_Data\Study\Git\AsyncAwaitDemo\obj\Debug\net10.0\ref\AsyncAwaitDemo.dll

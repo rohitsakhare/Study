@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Data\\R_Data\\Study\\Git\\Ecommerce\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EEB1EA24-32EA-4110-8255-2E0F589129DD}|ecommerce-platform\\backend\\services\\test-service\\TestService\\TestService.csproj|d:\\data\\r_data\\study\\git\\ecommerce\\ecommerce-platform\\backend\\services\\test-service\\testservice\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{EEB1EA24-32EA-4110-8255-2E0F589129DD}|ecommerce-platform\\backend\\services\\test-service\\TestService\\TestService.csproj|solutionrelative:ecommerce-platform\\backend\\services\\test-service\\testservice\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CAF3CD2F-4FEA-8CF3-031C-B33E65F50FB5}|ecommerce-platform\\backend\\services\\order-service\\OrderService\\OrderService.csproj|d:\\data\\r_data\\study\\git\\ecommerce\\ecommerce-platform\\backend\\services\\order-service\\orderservice\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CAF3CD2F-4FEA-8CF3-031C-B33E65F50FB5}|ecommerce-platform\\backend\\services\\order-service\\OrderService\\OrderService.csproj|solutionrelative:ecommerce-platform\\backend\\services\\order-service\\orderservice\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CAF3CD2F-4FEA-8CF3-031C-B33E65F50FB5}|ecommerce-platform\\backend\\services\\order-service\\OrderService\\OrderService.csproj|d:\\data\\r_data\\study\\git\\ecommerce\\ecommerce-platform\\backend\\services\\order-service\\orderservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CAF3CD2F-4FEA-8CF3-031C-B33E65F50FB5}|ecommerce-platform\\backend\\services\\order-service\\OrderService\\OrderService.csproj|solutionrelative:ecommerce-platform\\backend\\services\\order-service\\orderservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "D:\\Data\\R_Data\\Study\\Git\\Ecommerce\\ecommerce-platform\\backend\\services\\test-service\\TestService\\Dockerfile",
+              "RelativeDocumentMoniker": "ecommerce-platform\\backend\\services\\test-service\\TestService\\Dockerfile",
+              "ToolTip": "D:\\Data\\R_Data\\Study\\Git\\Ecommerce\\ecommerce-platform\\backend\\services\\test-service\\TestService\\Dockerfile",
+              "RelativeToolTip": "ecommerce-platform\\backend\\services\\test-service\\TestService\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-04-03T04:43:06.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "D:\\Data\\R_Data\\Study\\Git\\Ecommerce\\ecommerce-platform\\backend\\services\\order-service\\OrderService\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "ecommerce-platform\\backend\\services\\order-service\\OrderService\\Controllers\\OrdersController.cs",
+              "ToolTip": "D:\\Data\\R_Data\\Study\\Git\\Ecommerce\\ecommerce-platform\\backend\\services\\order-service\\OrderService\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "ecommerce-platform\\backend\\services\\order-service\\OrderService\\Controllers\\OrdersController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowDEAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T04:20:55.423Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Data\\R_Data\\Study\\Git\\Ecommerce\\ecommerce-platform\\backend\\services\\order-service\\OrderService\\Program.cs",
+              "RelativeDocumentMoniker": "ecommerce-platform\\backend\\services\\order-service\\OrderService\\Program.cs",
+              "ToolTip": "D:\\Data\\R_Data\\Study\\Git\\Ecommerce\\ecommerce-platform\\backend\\services\\order-service\\OrderService\\Program.cs",
+              "RelativeToolTip": "ecommerce-platform\\backend\\services\\order-service\\OrderService\\Program.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAACwAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T04:06:46.272Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

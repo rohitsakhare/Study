@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZUCrDWt76cY=",
+  "success": true,
+  "projectFilePath": "D:\\Data\\R_Data\\Study\\Git\\Ecommerce\\ecommerce-platform\\backend\\services\\test-service\\TestService\\TestService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Rohit\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.14\\microsoft.aspnetcore.openapi.9.0.14.nupkg.sha512",
+    "C:\\Users\\Rohit\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512",
+    "C:\\Users\\Rohit\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.23.0\\microsoft.visualstudio.azure.containers.tools.targets.1.23.0.nupkg.sha512"
+  ],
+  "logs": []
+}

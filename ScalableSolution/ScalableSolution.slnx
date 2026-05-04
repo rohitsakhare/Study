@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="ProductService/ProductService.csproj" />
+  <Project Path="Shared.Contracts/Shared.Contracts.csproj" />
+  <Project Path="Shared.Messaging/Shared.Messaging.csproj" />
+  <Project Path="Shared.Outbox/Shared.Outbox.csproj" />
+</Solution>

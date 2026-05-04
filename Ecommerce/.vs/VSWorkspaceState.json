@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ecommerce-platform",
+    "\\ecommerce-platform\\backend",
+    "\\ecommerce-platform\\backend\\services",
+    "\\ecommerce-platform\\backend\\services\\order-service",
+    "\\ecommerce-platform\\backend\\services\\order-service\\OrderService"
+  ],
+  "SelectedNode": "\\Ecommerce.sln",
+  "PreviewInSolutionExplorer": false
+}

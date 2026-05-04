@@ -1,0 +1,79 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Data\\R_Data\\Study\\Git\\CQRS-Demo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6BB5A0E4-A3ED-EBD8-B86F-21996AABC09A}|ProductService\\ProductService.csproj|d:\\data\\r_data\\study\\git\\cqrs-demo\\productservice\\application\\handlers\\createproducthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6BB5A0E4-A3ED-EBD8-B86F-21996AABC09A}|ProductService\\ProductService.csproj|solutionrelative:productservice\\application\\handlers\\createproducthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BB5A0E4-A3ED-EBD8-B86F-21996AABC09A}|ProductService\\ProductService.csproj|d:\\data\\r_data\\study\\git\\cqrs-demo\\productservice\\productservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6BB5A0E4-A3ED-EBD8-B86F-21996AABC09A}|ProductService\\ProductService.csproj|solutionrelative:productservice\\productservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22810CC-07F4-A866-5459-A7FFBE699011}|ProductReadService\\ProductReadService.csproj|d:\\data\\r_data\\study\\git\\cqrs-demo\\productreadservice\\productreadservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D22810CC-07F4-A866-5459-A7FFBE699011}|ProductReadService\\ProductReadService.csproj|solutionrelative:productreadservice\\productreadservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 147,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CreateProductHandler.cs",
+              "DocumentMoniker": "D:\\Data\\R_Data\\Study\\Git\\CQRS-Demo\\ProductService\\Application\\Handlers\\CreateProductHandler.cs",
+              "RelativeDocumentMoniker": "ProductService\\Application\\Handlers\\CreateProductHandler.cs",
+              "ToolTip": "D:\\Data\\R_Data\\Study\\Git\\CQRS-Demo\\ProductService\\Application\\Handlers\\CreateProductHandler.cs",
+              "RelativeToolTip": "ProductService\\Application\\Handlers\\CreateProductHandler.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAiwCMAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T09:16:51.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductService",
+              "DocumentMoniker": "D:\\Data\\R_Data\\Study\\Git\\CQRS-Demo\\ProductService\\ProductService.csproj",
+              "RelativeDocumentMoniker": "ProductService\\ProductService.csproj",
+              "ToolTip": "D:\\Data\\R_Data\\Study\\Git\\CQRS-Demo\\ProductService\\ProductService.csproj",
+              "RelativeToolTip": "ProductService\\ProductService.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-15T09:15:37.21Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductReadService",
+              "DocumentMoniker": "D:\\Data\\R_Data\\Study\\Git\\CQRS-Demo\\ProductReadService\\ProductReadService.csproj",
+              "RelativeDocumentMoniker": "ProductReadService\\ProductReadService.csproj",
+              "ToolTip": "D:\\Data\\R_Data\\Study\\Git\\CQRS-Demo\\ProductReadService\\ProductReadService.csproj",
+              "RelativeToolTip": "ProductReadService\\ProductReadService.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-15T09:15:23.363Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
