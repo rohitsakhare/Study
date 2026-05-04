@@ -1,0 +1,25 @@
+.dashboard-email {
+  color: var(--app-text);
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.dashboard-hint {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--app-text-muted);
+}
+
+.dashboard-nav {
+  margin: 1.1rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+}
+
+.dashboard-nav-sep {
+  color: var(--app-text-subtle);
+  user-select: none;
+}

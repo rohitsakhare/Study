@@ -1,0 +1,138 @@
+.admin-note {
+  margin: 0 0 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--app-text-muted);
+}
+
+.admin-note code {
+  font-size: 0.82em;
+  padding: 0.18em 0.45em;
+  border-radius: 0.35rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+}
+
+.admin-success {
+  margin: 0 0 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--app-radius);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  background: rgba(34, 197, 94, 0.14);
+  border: 1px solid rgba(74, 222, 128, 0.35);
+  color: #bbf7d0;
+}
+
+.admin-grid {
+  display: grid;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+@media (min-width: 960px) {
+  .admin-grid {
+    grid-template-columns: minmax(20rem, 1fr) minmax(32rem, 1.35fr);
+  }
+}
+
+.admin-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.admin-panel .app-page-head {
+  margin-bottom: 0;
+}
+
+.admin-user-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.admin-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-edit-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem 0 0;
+}
+
+@media (min-width: 760px) {
+  .admin-edit-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-edit-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .admin-edit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.app-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 34rem;
+}
+
+.app-table th,
+.app-table td {
+  padding: 0.95rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.app-table th {
+  color: #cbd5e1;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.app-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.app-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.app-chip--admin {
+  background: rgba(236, 72, 153, 0.15);
+  color: #f9a8d4;
+}
+
+.app-chip--user {
+  background: rgba(34, 197, 94, 0.16);
+  color: #bef264;
+}
+
+.admin-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.admin-page .btn--primary {
+  width: 100%;
+  margin-top: 0.25rem;
+}

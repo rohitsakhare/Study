@@ -1,0 +1,213 @@
+<div class="app-page admin-page">
+  <div class="admin-grid">
+    <section class="app-card admin-panel app-card--md">
+      <header class="app-page-head">
+        <div>
+          <div class="app-brand"><span class="app-brand-dot" aria-hidden="true"></span> Admin</div>
+          <h1 class="app-title">Create user</h1>
+          <p class="app-subtitle">Add a new account, including auth and profile data.</p>
+        </div>
+        <a routerLink="/dashboard" class="btn btn--ghost">← Dashboard</a>
+      </header>
+
+      <div class="app-divider" role="presentation"></div>
+
+      <p class="admin-note">
+        This page calls <code>/api/admin/users</code>. Run the Node SSR server with
+        <code>SUPABASE_URL</code>, <code>SUPABASE_ANON_KEY</code>, and <code>SUPABASE_SERVICE_ROLE_KEY</code> in
+        your environment (for example a <code>.env</code> file next to the built server).
+      </p>
+
+      @if (errorMessage(); as err) {
+        <p class="app-banner-error" role="alert">{{ err }}</p>
+      }
+      @if (successMessage(); as ok) {
+        <p class="admin-success" role="status">{{ ok }}</p>
+      }
+
+      <form class="admin-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <label class="app-field">
+          <span class="app-label">Email</span>
+          <input class="app-input" type="email" formControlName="email" autocomplete="off" />
+          @if (form.controls.email.touched && form.controls.email.errors?.['required']) {
+            <span class="app-field-error">Email is required.</span>
+          }
+          @if (form.controls.email.touched && form.controls.email.errors?.['email']) {
+            <span class="app-field-error">Enter a valid email.</span>
+          }
+        </label>
+
+        <label class="app-field">
+          <span class="app-label">Password</span>
+          <input
+            class="app-input"
+            type="password"
+            formControlName="password"
+            autocomplete="new-password"
+          />
+          @if (form.controls.password.touched && form.controls.password.errors?.['required']) {
+            <span class="app-field-error">Password is required.</span>
+          }
+          @if (form.controls.password.touched && form.controls.password.errors?.['minlength']) {
+            <span class="app-field-error">At least 6 characters.</span>
+          }
+        </label>
+
+        <button class="btn btn--primary" type="submit" [disabled]="loading()">
+          {{ loading() ? 'Creating…' : 'Create user' }}
+        </button>
+      </form>
+    </section>
+
+    <section class="app-card admin-panel app-card--lg admin-user-section">
+      <header class="app-page-head">
+        <div>
+          <div class="app-brand"><span class="app-brand-dot" aria-hidden="true"></span> Users</div>
+          <h1 class="app-title">User management</h1>
+          <p class="app-subtitle">Review users and update profile details from a central admin console.</p>
+        </div>
+      </header>
+
+      <div class="app-divider" role="presentation"></div>
+
+      @if (listError(); as err) {
+        <p class="app-banner-error" role="alert">{{ err }}</p>
+      }
+
+      @if (listLoading()) {
+        <p>Loading users…</p>
+      } @else if (users().length === 0) {
+        <p>No users found.</p>
+      } @else {
+        <div class="admin-table-wrap">
+          <table class="app-table">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Membership</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (user of users(); track user.id) {
+                <tr>
+                  <td>{{ user.email ?? '—' }}</td>
+                  <td>{{ user.full_name ?? '—' }}</td>
+                  <td>
+                    <span class="app-chip {{ user.role === 'admin' ? 'app-chip--admin' : 'app-chip--user' }}">
+                      {{ user.role }}
+                    </span>
+                  </td>
+                  <td>{{ user.membership }}</td>
+                  <td>
+                    <button class="btn btn--ghost" type="button" (click)="selectUser(user)">
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    
+
+      @if (selectedUser(); as user) {
+        <div class="admin-edit-panel">
+          <section class="app-card app-card--md">
+            <header class="app-page-head">
+              <div>
+                <div class="app-brand"><span class="app-brand-dot" aria-hidden="true"></span> Edit user</div>
+                <h2 class="app-title">{{ user.email ?? 'User details' }}</h2>
+                <p class="app-subtitle">Update the selected user’s email, role, and profile fields.</p>
+              </div>
+              <button class="btn btn--ghost" type="button" (click)="clearSelection()">Cancel</button>
+            </header>
+
+            <div class="app-divider" role="presentation"></div>
+
+            @if (updateError(); as err) {
+              <p class="app-banner-error" role="alert">{{ err }}</p>
+            }
+            @if (updateSuccess(); as ok) {
+              <p class="admin-success" role="status">{{ ok }}</p>
+            }
+
+            <form class="admin-form" [formGroup]="editForm" (ngSubmit)="submitUpdate()" novalidate>
+              <label class="app-field">
+                <span class="app-label">Email</span>
+                <input class="app-input" type="email" formControlName="email" autocomplete="off" />
+                @if (editForm.controls.email.touched && editForm.controls.email.errors?.['required']) {
+                  <span class="app-field-error">Email is required.</span>
+                }
+                @if (editForm.controls.email.touched && editForm.controls.email.errors?.['email']) {
+                  <span class="app-field-error">Enter a valid email.</span>
+                }
+              </label>
+
+              <div class="admin-edit-grid">
+                <label class="app-field">
+                  <span class="app-label">Role</span>
+                  <select class="app-input" formControlName="role">
+                    <option value="admin">admin</option>
+                    <option value="user">user</option>
+                  </select>
+                </label>
+
+                <label class="app-field">
+                  <span class="app-label">Membership</span>
+                  <select class="app-input" formControlName="membership">
+                    <option value="Social">Social</option>
+                    <option value="Premium">Premium</option>
+                  </select>
+                </label>
+              </div>
+
+              <label class="app-field">
+                <span class="app-label">Full name</span>
+                <input class="app-input" type="text" formControlName="full_name" />
+              </label>
+
+              <label class="app-field">
+                <span class="app-label">Bio</span>
+                <textarea class="app-input" formControlName="bio"></textarea>
+              </label>
+
+              <label class="app-field">
+                <span class="app-label">Contact number</span>
+                <input class="app-input" type="tel" formControlName="contact_number" autocomplete="tel" />
+              </label>
+
+              <label class="app-field">
+                <span class="app-label">Address</span>
+                <textarea class="app-input" formControlName="address"></textarea>
+              </label>
+
+              <label class="app-field">
+                <span class="app-label">Location</span>
+                <input
+                  class="app-input"
+                  type="text"
+                  formControlName="location"
+                  autocomplete="off"
+                  placeholder="Location in India"
+                />
+              </label>
+
+              <label class="app-field">
+                <span class="app-label">Avatar URL</span>
+                <input class="app-input" type="url" formControlName="avatar_url" />
+              </label>
+
+              <button class="btn btn--primary" type="submit" [disabled]="updateLoading()">
+                {{ updateLoading() ? 'Updating…' : 'Update user' }}
+              </button>
+            </form>
+          </section>
+        </div>
+      }
+    </section>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+CREATE DATABASE productsdb;
+CREATE DATABASE keycloak;

@@ -1,0 +1,108 @@
+@ProductService_HostAddress = http://localhost:5001
+
+###
+# Get all products
+GET {{ProductService_HostAddress}}/api/products
+Accept: application/json
+
+###
+# Get products with filters
+GET {{ProductService_HostAddress}}/api/products?category=Electronics&isActive=true&minPrice=100&maxPrice=1500
+Accept: application/json
+
+###
+# Search products
+GET {{ProductService_HostAddress}}/api/products?search=laptop
+Accept: application/json
+
+###
+# Get product by ID
+GET {{ProductService_HostAddress}}/api/products/1
+Accept: application/json
+
+###
+# Get product categories
+GET {{ProductService_HostAddress}}/api/products/categories
+Accept: application/json
+
+###
+# Create a new product
+POST {{ProductService_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Wireless Mouse",
+  "description": "Ergonomic wireless mouse with long battery life",
+  "price": 49.99,
+  "stockQuantity": 200,
+  "category": "Electronics"
+}
+
+###
+# Create another product
+POST {{ProductService_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Coffee Mug",
+  "description": "Insulated coffee mug that keeps drinks hot",
+  "price": 24.99,
+  "stockQuantity": 150,
+  "category": "Kitchen"
+}
+
+###
+# Update a product
+PUT {{ProductService_HostAddress}}/api/products/1
+Content-Type: application/json
+
+{
+  "name": "Gaming Laptop",
+  "description": "High-performance gaming laptop with RTX graphics",
+  "price": 1499.99,
+  "stockQuantity": 25,
+  "category": "Electronics"
+}
+
+###
+# Partially update a product
+PUT {{ProductService_HostAddress}}/api/products/2
+Content-Type: application/json
+
+{
+  "price": 29.99,
+  "stockQuantity": 120
+}
+
+###
+# Deactivate a product
+PUT {{ProductService_HostAddress}}/api/products/3
+Content-Type: application/json
+
+{
+  "isActive": false
+}
+
+###
+# Delete a product
+DELETE {{ProductService_HostAddress}}/api/products/4
+Accept: application/json
+
+###
+# Test error handling - Get non-existent product
+GET {{ProductService_HostAddress}}/api/products/999
+Accept: application/json
+
+###
+# Test error handling - Update non-existent product
+PUT {{ProductService_HostAddress}}/api/products/999
+Content-Type: application/json
+
+{
+  "name": "Test Product"
+}
+
+###
+# Test error handling - Delete non-existent product
+DELETE {{ProductService_HostAddress}}/api/products/999
+Accept: application/json

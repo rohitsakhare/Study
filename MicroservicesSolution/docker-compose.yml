@@ -1,0 +1,107 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: ProductDb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - microservices
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ProductDb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_DATABASE: UserServiceDB
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - microservices
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+  userservice:
+    build: ./UserService
+    container_name: userservice
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ConnectionStrings__MongoDB=mongodb://mongodb:27017
+      - MongoDB__DatabaseName=UserServiceDB
+    ports:
+      - "5000:8080"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - microservices
+    restart: on-failure
+
+  productservice:
+    build: ./ProductService
+    container_name: productservice
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=ProductDb;Username=postgres;Password=password
+    ports:
+      - "5001:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - microservices
+    restart: on-failure
+
+  orderservice:
+    build: ./OrderService
+    container_name: orderservice
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_ENVIRONMENT=Docker
+    ports:
+      - "5002:8080"
+    networks:
+      - microservices
+
+  apigateway:
+    build: ./ApiGateway
+    container_name: apigateway
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_ENVIRONMENT=Docker
+    ports:
+      - "8000:8080"
+    depends_on:
+      - userservice
+      - productservice
+      - orderservice
+    networks:
+      - microservices
+
+volumes:
+  postgres_data:
+  mongodb_data:
+
+networks:
+  microservices:
+    driver: bridge

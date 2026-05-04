@@ -1,0 +1,78 @@
+version: "3.9"
+
+services:
+  # -----------------------------
+  # Postgres database
+  # -----------------------------
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_DB: productsdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d productsdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # -----------------------------
+  # .NET API service
+  # -----------------------------
+  product-api:
+    build:
+      context: ./product-service
+      dockerfile: Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      ConnectionStrings__Default: "Host=postgres;Port=5432;Database=productsdb;Username=admin;Password=admin"
+    ports:
+      - "8080:8080"
+
+  # -----------------------------
+  # React frontend
+  # -----------------------------
+  product-frontend:
+    build:
+      context: ./product-frontend
+      dockerfile: Dockerfile
+    container_name: product-frontend
+    ports:
+      - "3000:80"
+    environment:
+      REACT_APP_API_URL: http://product-api:8080
+    depends_on:
+      - product-api
+
+  # -----------------------------
+  # RabbitMQ message broker
+  # -----------------------------
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  postgres-data:
+  rabbitmq-data:

@@ -1,0 +1,34 @@
+@product_service_HostAddress = http://localhost:5049
+
+### Get all products
+GET {{product_service_HostAddress}}/api/products
+Accept: application/json
+
+### Get product by ID
+# Replace {id} with a real product GUID
+GET {{product_service_HostAddress}}/api/products/{a2342b32-eb0e-4303-9266-932841e42295}
+Accept: application/json
+
+### Create a new product
+POST {{product_service_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "name": "MacBook Pro 1",
+  "price": 2500
+}
+
+
+### Update a product
+# Replace {id} with a real product GUID
+PUT {{product_service_HostAddress}}/api/products/{a2342b32-eb0e-4303-9266-932841e42295}
+Content-Type: application/json
+
+{
+  "name": "Updated Product Name",
+  "price": 2999
+}
+
+### Delete a product
+# Replace {id} with a real product GUID
+DELETE {{product_service_HostAddress}}/api/products/{a2342b32-eb0e-4303-9266-932841e42295}

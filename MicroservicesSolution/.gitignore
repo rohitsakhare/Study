@@ -1,0 +1,4 @@
+# Ignore all bin and obj folders recursively
+**/bin/
+**/obj/
+**/Migrations/

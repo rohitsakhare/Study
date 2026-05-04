@@ -1,0 +1,38 @@
+<div class="app-page dashboard-page">
+  @if (loading()) {
+    <div class="app-card app-card--compact">
+      <p class="app-status">Loading…</p>
+    </div>
+  } @else if (userEmail(); as email) {
+    <div class="app-card app-card--md">
+      <header class="app-page-head">
+        <div>
+          <div class="app-brand"><span class="app-brand-dot" aria-hidden="true"></span> Home</div>
+          <h1 class="app-title">Dashboard</h1>
+          <p class="app-subtitle">Signed in as <span class="dashboard-email">{{ email }}</span></p>
+        </div>
+        <button
+          type="button"
+          class="btn btn--secondary"
+          (click)="logout()"
+          [disabled]="logoutLoading()"
+        >
+          {{ logoutLoading() ? 'Signing out…' : 'Sign out' }}
+        </button>
+      </header>
+
+      <div class="app-divider" role="presentation"></div>
+
+      <p class="dashboard-hint">
+        Your session is active. Sign out when you finish on a shared device.
+      </p>
+      <p class="dashboard-nav">
+        <a routerLink="/profile" class="app-link">View profile →</a>
+        @if (isAdmin()) {
+          <span class="dashboard-nav-sep" aria-hidden="true">·</span>
+          <a routerLink="/admin" class="app-link">Admin: add users →</a>
+        }
+      </p>
+    </div>
+  }
+</div>

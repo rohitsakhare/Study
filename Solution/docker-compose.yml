@@ -1,0 +1,93 @@
+services:
+
+  keycloak-db:
+    image: postgres:16.3
+    container_name: keycloak_db
+    restart: always
+    environment:
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
+      POSTGRES_DB: keycloak
+    ports:
+      - "5433:5432"
+    healthcheck: 
+      test: ["CMD-SHELL", "pg_isready -U postgres"] 
+      interval: 5s 
+      timeout: 5s 
+      retries: 5
+    volumes:
+      - keycloak_data:/var/lib/postgresql/data
+
+  product-db:
+    image: postgres:16.3
+    container_name: product_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: productsdb
+    ports:
+      - "5432:5432"
+    healthcheck: 
+      test: ["CMD-SHELL", "pg_isready -U postgres"] 
+      interval: 5s 
+      timeout: 5s 
+      retries: 5
+    volumes:
+      - product_data:/var/lib/postgresql/data
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.5.7
+    container_name: keycloak
+    command: start-dev
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://keycloak-db:5432/keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: keycloak
+
+    ports:
+      - "8081:8080"
+    depends_on:
+      - keycloak-db
+
+  product-migrator:
+    build:
+      context: .
+      dockerfile: ./ProductService.Migrator/Dockerfile
+    container_name: product_migrator
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=product-db;Port=5432;Database=productsdb;Username=postgres;Password=postgres;"
+    depends_on:
+      product-db:
+        condition: service_healthy
+
+  productservice:
+    build:
+      context: .
+      dockerfile: ./ProductService/Dockerfile
+    container_name: productservice
+    ports:
+      - "5001:8080"
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=product-db;Port=5432;Database=productsdb;Username=postgres;Password=postgres;"
+    depends_on:
+      product-migrator:
+        condition: service_completed_successfully
+
+  apigateway:
+    build:
+      context: .
+      dockerfile: ./ApiGateway/Dockerfile
+    container_name: apigateway
+    ports:
+      - "7000:8080"
+    depends_on:
+      - productservice
+
+volumes:
+  keycloak_data:
+  product_data:

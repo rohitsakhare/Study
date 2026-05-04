@@ -1,0 +1,61 @@
+﻿using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Ordering.API.Extensions;
+using Ordering.Application.Orders.GetAllOrders;
+using Ordering.Application.Orders.PlaceOrder;
+using SharedKernel.Domain;
+using SharedKernel.Messaging;
+using System.Globalization;
+using System.Security.Claims;
+
+namespace Ordering.API.Controllers.Orders;
+
+[ApiVersion(1)]
+[Route("api/v{v:apiVersion}/orders")]
+[ApiController]
+[Authorize]
+public class OrdersController : ControllerBase
+{
+    [HttpPost]
+    public async Task<IActionResult> PlaceOrder([FromBody] PlaceOrderRequest request, ICommandHandler<PlaceOrderCommand, long> handler, CancellationToken cancellationToken)
+    {
+        Claim? userIdClaim = User?.FindFirst(ClaimTypes.NameIdentifier);
+
+        if (userIdClaim == null || string.IsNullOrEmpty(userIdClaim.Value))
+        {
+            return Unauthorized("User ID claim is missing.");
+        }
+
+        long userId = long.Parse(userIdClaim.Value, CultureInfo.InvariantCulture);
+
+        var orderItems = request.OrderItems.Select(item =>
+            new OrderItemCommand(item.ProductId, item.ProductName, item.PriceAmount, item.PriceCurrency, item.Quantity))
+            .ToList();
+
+        var command = new PlaceOrderCommand(userId, orderItems);
+
+        Result<long> result = await handler.Handle(command, cancellationToken);
+
+        if (result.IsFailure)
+        {
+            return result.Error.ToActionResult();
+        }
+        return Created(string.Empty, result.Value);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllOrders(IQueryHandler<GetAllOrdersQuery, IReadOnlyList<OrderResponse>> handler, CancellationToken cancellationToken)
+    {
+        var query = new GetAllOrdersQuery();
+
+        Result<IReadOnlyList<OrderResponse>> result = await handler.Handle(query, cancellationToken);
+
+        if (result.IsFailure)
+        {
+            return result.Error.ToActionResult();
+        }
+
+        return Ok(result.Value);
+    }
+}

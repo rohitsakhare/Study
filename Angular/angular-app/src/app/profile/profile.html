@@ -1,0 +1,179 @@
+<div class="app-page profile-page">
+  <div class="app-card app-card--lg">
+    <header class="app-page-head">
+      <div>
+        <div class="app-brand"><span class="app-brand-dot" aria-hidden="true"></span> Account</div>
+        <h1 class="app-title">Profile</h1>
+        <p class="app-subtitle">Your account and profile details</p>
+      </div>
+      <a routerLink="/dashboard" class="btn btn--ghost">← Dashboard</a>
+    </header>
+
+    @if (loading()) {
+      <p class="app-status">Loading profile…</p>
+    } @else if (loadError(); as err) {
+      <p class="app-banner-error" role="alert">{{ err }}</p>
+    } @else {
+      <dl class="app-dl">
+        <div class="app-dl-row">
+          <dt class="app-dl-dt">Email</dt>
+          <dd class="app-dl-dd">{{ authEmail() ?? '—' }}</dd>
+        </div>
+      </dl>
+
+      @if (editing()) {
+        <div class="app-divider" role="presentation"></div>
+
+        @if (saveError(); as sErr) {
+          <p class="app-banner-error" role="alert">{{ sErr }}</p>
+        }
+
+        <form class="profile-form" [formGroup]="profileForm" (ngSubmit)="save()" novalidate>
+          <label class="app-field">
+            <span class="app-label">Full name</span>
+            <input class="app-input" type="text" formControlName="full_name" autocomplete="name" />
+          </label>
+
+          <label class="app-field">
+            <span class="app-label">Membership</span>
+            <select class="app-input app-select" formControlName="membership">
+              @for (opt of membershipOptions; track opt.value) {
+                <option [value]="opt.value">{{ opt.label }}</option>
+              }
+            </select>
+          </label>
+
+          <label class="app-field">
+            <span class="app-label">Bio</span>
+            <textarea
+              class="app-input app-input--textarea"
+              formControlName="bio"
+              rows="4"
+              autocomplete="off"
+            ></textarea>
+          </label>
+
+          <label class="app-field">
+            <span class="app-label">Contact number</span>
+            <input class="app-input" type="tel" formControlName="contact_number" autocomplete="tel" />
+          </label>
+
+          <label class="app-field">
+            <span class="app-label">Address</span>
+            <textarea class="app-input app-input--textarea" formControlName="address" rows="3"></textarea>
+          </label>
+
+          <label class="app-field">
+            <span class="app-label">Location</span>
+            <input class="app-input" type="text" formControlName="location" autocomplete="off" placeholder="Location in India" />
+          </label>
+
+          <label class="app-field">
+            <span class="app-label">Avatar URL</span>
+            <input
+              class="app-input"
+              type="url"
+              formControlName="avatar_url"
+              autocomplete="off"
+              placeholder="https://…"
+            />
+            @if (
+              profileForm.controls.avatar_url.touched && profileForm.controls.avatar_url.errors?.['url']
+            ) {
+              <span class="app-field-error">Enter a valid URL or leave empty.</span>
+            }
+          </label>
+
+          <div class="profile-actions">
+            <button class="btn btn--primary profile-actions__primary" type="submit" [disabled]="saving()">
+              {{ saving() ? 'Saving…' : 'Save profile' }}
+            </button>
+            <button
+              class="btn btn--secondary"
+              type="button"
+              (click)="cancelEdit()"
+              [disabled]="saving()"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      } @else if (profile(); as p) {
+        <div class="app-divider" role="presentation"></div>
+
+        <dl class="app-dl">
+          <div class="app-dl-row">
+            <dt class="app-dl-dt">Full name</dt>
+            <dd class="app-dl-dd">{{ p.full_name?.trim() ? p.full_name : '—' }}</dd>
+          </div>
+          <div class="app-dl-row">
+            <dt class="app-dl-dt">Membership</dt>
+            <dd class="app-dl-dd">
+              <span class="membership-badge" [class.membership-badge--premium]="p.membership === 'Premium'">
+                {{ p.membership === 'Premium' || p.membership === 'Social' ? p.membership : 'Social' }}
+              </span>
+            </dd>
+          </div>
+          <div class="app-dl-row">
+            <dt class="app-dl-dt">Contact</dt>
+            <dd class="app-dl-dd">{{ p.contact_number?.trim() ? p.contact_number : '—' }}</dd>
+          </div>
+          <div class="app-dl-row">
+            <dt class="app-dl-dt">Location</dt>
+            <dd class="app-dl-dd">{{ p.location?.trim() ? p.location : '—' }}</dd>
+          </div>
+          <div class="app-dl-row">
+            <dt class="app-dl-dt">Address</dt>
+            <dd class="app-dl-dd app-dl-bio">{{ p.address?.trim() ? p.address : '—' }}</dd>
+          </div>
+          <div class="app-dl-row">
+            <dt class="app-dl-dt">Bio</dt>
+            <dd class="app-dl-dd app-dl-bio">{{ p.bio?.trim() ? p.bio : '—' }}</dd>
+          </div>
+          <div class="app-dl-row">
+            <dt class="app-dl-dt">Avatar</dt>
+            <dd class="app-dl-dd">
+              @if (p.avatar_url) {
+                <div class="profile-avatar-row">
+                  <img
+                    class="app-avatar-preview"
+                    [src]="p.avatar_url"
+                    alt=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer"
+                  />
+                  <a
+                    [href]="p.avatar_url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="app-link"
+                    >Open URL</a
+                  >
+                </div>
+              } @else {
+                <span class="app-dl-dd--muted">—</span>
+              }
+            </dd>
+          </div>
+          <div class="app-dl-row">
+            <dt class="app-dl-dt">Updated</dt>
+            <dd class="app-dl-dd">{{ p.updated_at ? (p.updated_at | date : 'medium') : '—' }}</dd>
+          </div>
+        </dl>
+
+        <div class="profile-toolbar">
+          <button class="btn btn--secondary" type="button" (click)="startEdit()">Edit profile</button>
+        </div>
+      } @else {
+        <div class="app-divider" role="presentation"></div>
+        <p class="app-empty-hint">
+          No profile row yet. Run <code>supabase/profiles.sql</code> in the Supabase SQL editor if you have not,
+          then add your details below.
+        </p>
+        <div class="profile-toolbar">
+          <button class="btn btn--primary" type="button" (click)="startEdit()">Add profile</button>
+        </div>
+      }
+    }
+  </div>
+</div>

@@ -1,0 +1,11 @@
+D:\R_Data\Study\MicroservicesDemo\Services\ProductService\ProductService.Domain\bin\Debug\net9.0\ProductService.Domain.deps.json
+D:\R_Data\Study\MicroservicesDemo\Services\ProductService\ProductService.Domain\bin\Debug\net9.0\ProductService.Domain.dll
+D:\R_Data\Study\MicroservicesDemo\Services\ProductService\ProductService.Domain\bin\Debug\net9.0\ProductService.Domain.pdb
+D:\R_Data\Study\MicroservicesDemo\Services\ProductService\ProductService.Domain\obj\Debug\net9.0\ProductService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\R_Data\Study\MicroservicesDemo\Services\ProductService\ProductService.Domain\obj\Debug\net9.0\ProductService.Domain.AssemblyInfoInputs.cache
+D:\R_Data\Study\MicroservicesDemo\Services\ProductService\ProductService.Domain\obj\Debug\net9.0\ProductService.Domain.AssemblyInfo.cs
+D:\R_Data\Study\MicroservicesDemo\Services\ProductService\ProductService.Domain\obj\Debug\net9.0\ProductService.Domain.csproj.CoreCompileInputs.cache
+D:\R_Data\Study\MicroservicesDemo\Services\ProductService\ProductService.Domain\obj\Debug\net9.0\ProductService.Domain.dll
+D:\R_Data\Study\MicroservicesDemo\Services\ProductService\ProductService.Domain\obj\Debug\net9.0\refint\ProductService.Domain.dll
+D:\R_Data\Study\MicroservicesDemo\Services\ProductService\ProductService.Domain\obj\Debug\net9.0\ProductService.Domain.pdb
+D:\R_Data\Study\MicroservicesDemo\Services\ProductService\ProductService.Domain\obj\Debug\net9.0\ref\ProductService.Domain.dll

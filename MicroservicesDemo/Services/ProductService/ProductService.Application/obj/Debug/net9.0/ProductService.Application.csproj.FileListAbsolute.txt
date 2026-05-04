@@ -1,0 +1,4 @@
+D:\R_Data\Study\MicroservicesDemo\Services\ProductService\ProductService.Application\obj\Debug\net9.0\ProductService.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\R_Data\Study\MicroservicesDemo\Services\ProductService\ProductService.Application\obj\Debug\net9.0\ProductService.Application.AssemblyInfoInputs.cache
+D:\R_Data\Study\MicroservicesDemo\Services\ProductService\ProductService.Application\obj\Debug\net9.0\ProductService.Application.AssemblyInfo.cs
+D:\R_Data\Study\MicroservicesDemo\Services\ProductService\ProductService.Application\obj\Debug\net9.0\ProductService.Application.csproj.CoreCompileInputs.cache

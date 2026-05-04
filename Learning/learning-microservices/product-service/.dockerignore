@@ -1,0 +1,17 @@
+bin/
+obj/
+*.log
+*.tmp
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+node_modules/
+*.md
+.git/
+.gitignore
+README.md
+*.http
+appsettings.*.json
